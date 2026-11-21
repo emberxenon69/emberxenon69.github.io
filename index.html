@@ -1,0 +1,1264 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>流动影像 - 品牌视频社区_记录日常与创意</title>
+<meta name="description" content="流动影像官方网站，专注日常记录与创意影像的品牌视频社区，汇聚原创创作者与企业内容生态，持续呈现高清精品内容。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b2f3a'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%23e9b44c' stroke-width='3'/%3E%3Cpath d='M27 24 L44 32 L27 40 Z' fill='%23e9b44c'/%3E%3C/svg%3E">
+<style>
+:root{
+  --fd-ink:#23262f;
+  --fd-ink-soft:#4a4f5c;
+  --fd-paper:#f4f1ec;
+  --fd-paper-2:#fdfbf7;
+  --fd-amber:#e9b44c;
+  --fd-amber-deep:#c2882a;
+  --fd-clay:#7c5a44;
+  --fd-line:#e2dbcf;
+  --fd-dark:#2b2f3a;
+  --fd-radius:18px;
+  --fd-shadow:0 10px 30px rgba(60,48,32,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  color:var(--fd-ink);
+  background:var(--fd-paper);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3,h4{margin:0 0 .5em;line-height:1.3;font-weight:700}
+p{margin:0 0 1em}
+.fd-wrap{width:min(1180px,92%);margin:0 auto}
+.fd-anchor{scroll-margin-top:132px}
+.fd-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;letter-spacing:.14em;color:var(--fd-amber-deep);
+  font-weight:600;text-transform:uppercase;margin-bottom:10px;
+}
+.fd-eyebrow::before{content:"";width:22px;height:2px;background:var(--fd-amber-deep);display:inline-block}
+.fd-sec{padding:72px 0}
+.fd-sec-head{max-width:720px;margin-bottom:36px}
+.fd-sec-head h2{font-size:clamp(24px,3vw,34px);letter-spacing:.01em}
+.fd-sec-head p{color:var(--fd-ink-soft);font-size:15px}
+
+/* ===== 吸顶：公告条 + 页头 ===== */
+.fd-sticky{
+  position:sticky;top:0;z-index:80;
+  background:rgba(244,241,236,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--fd-line);
+}
+.fd-notice{
+  background:var(--fd-dark);color:#f2e9da;
+  font-size:13px;letter-spacing:.02em;
+}
+.fd-notice-inner{
+  display:flex;align-items:center;gap:14px;
+  padding:9px 0;flex-wrap:wrap;
+}
+.fd-notice-tag{
+  background:var(--fd-amber);color:#2b2417;font-weight:700;
+  padding:2px 10px;border-radius:999px;font-size:12px;white-space:nowrap;
+}
+.fd-notice-list{display:flex;gap:22px;flex-wrap:wrap;overflow:hidden}
+.fd-notice-list span{opacity:.9}
+.fd-notice-list b{font-weight:600;color:var(--fd-amber)}
+.fd-head{display:flex;align-items:center;gap:26px;padding:14px 0}
+.fd-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.02em;white-space:nowrap}
+.fd-logo-mark{
+  width:36px;height:36px;border-radius:11px;background:var(--fd-dark);
+  display:grid;place-items:center;color:var(--fd-amber);font-size:15px;
+}
+.fd-logo small{display:block;font-size:10px;font-weight:500;letter-spacing:.28em;color:var(--fd-ink-soft)}
+.fd-nav{display:flex;gap:22px;font-size:14.5px;margin-left:6px;flex-wrap:wrap}
+.fd-nav a{padding:6px 2px;border-bottom:2px solid transparent;transition:.2s;color:var(--fd-ink-soft)}
+.fd-nav a:hover,.fd-nav a:focus-visible{color:var(--fd-ink);border-bottom-color:var(--fd-amber)}
+.fd-head-tools{margin-left:auto;display:flex;align-items:center;gap:10px}
+.fd-search{
+  display:flex;align-items:center;gap:6px;background:var(--fd-paper-2);
+  border:1px solid var(--fd-line);border-radius:999px;padding:6px 8px 6px 14px;
+}
+.fd-search input{
+  border:none;background:transparent;outline:none;font-size:13.5px;width:150px;color:var(--fd-ink);
+}
+.fd-search button{
+  background:var(--fd-dark);color:var(--fd-amber);border-radius:999px;
+  font-size:12.5px;padding:5px 12px;font-weight:600;
+}
+.fd-nav-toggle{
+  display:none;width:40px;height:40px;border-radius:11px;border:1px solid var(--fd-line);
+  font-size:18px;background:var(--fd-paper-2);
+}
+.fd-search-feedback{
+  font-size:12.5px;color:var(--fd-amber-deep);min-height:18px;margin:-6px 0 0 4px;
+}
+.fd-mobile-nav{display:none;flex-direction:column;gap:2px;padding:8px 0 16px;border-top:1px solid var(--fd-line)}
+.fd-mobile-nav a{padding:11px 6px;font-size:15px;border-bottom:1px dashed var(--fd-line)}
+
+/* ===== 首屏 ===== */
+.fd-hero{padding:58px 0 30px;position:relative;overflow:hidden}
+.fd-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.fd-hero h1{
+  font-size:clamp(34px,5vw,58px);letter-spacing:.02em;margin-bottom:16px;
+}
+.fd-hero h1 em{font-style:normal;color:var(--fd-amber-deep);}
+.fd-hero-lead{font-size:17px;color:var(--fd-ink-soft);max-width:30em}
+.fd-hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 26px}
+.fd-chip{
+  font-size:13px;padding:5px 13px;border-radius:999px;
+  background:var(--fd-paper-2);border:1px solid var(--fd-line);color:var(--fd-ink-soft);
+}
+.fd-chip.is-hot{background:#fbeccd;border-color:#f1d69c;color:var(--fd-amber-deep);font-weight:600}
+.fd-hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.fd-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;
+  font-size:14.5px;font-weight:600;transition:.2s;border:1px solid transparent;
+}
+.fd-btn-primary{background:var(--fd-dark);color:#fff}
+.fd-btn-primary:hover{background:#3b4150;transform:translateY(-1px)}
+.fd-btn-ghost{background:transparent;border-color:var(--fd-amber-deep);color:var(--fd-amber-deep)}
+.fd-btn-ghost:hover{background:#fbeccd}
+.fd-hero-stats{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}
+.fd-stat b{display:block;font-size:26px;letter-spacing:.02em;color:var(--fd-ink)}
+.fd-stat span{font-size:12.5px;color:var(--fd-ink-soft)}
+.fd-hero-visual{position:relative}
+.fd-hero-cover{
+  border-radius:26px;overflow:hidden;box-shadow:var(--fd-shadow);position:relative;
+  background:var(--fd-dark);aspect-ratio:5/4;
+}
+.fd-hero-cover img{width:100%;height:100%;object-fit:cover}
+.fd-hero-cover .fd-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.9);
+  display:grid;place-items:center;color:var(--fd-dark);font-size:22px;
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
+}
+.fd-hero-badge{
+  position:absolute;left:-16px;bottom:26px;background:var(--fd-paper-2);
+  border-radius:16px;padding:14px 18px;box-shadow:var(--fd-shadow);max-width:230px;
+}
+.fd-hero-badge b{display:block;font-size:14px}
+.fd-hero-badge span{font-size:12.5px;color:var(--fd-ink-soft)}
+
+/* ===== 深度解析 ===== */
+.fd-about{background:var(--fd-paper-2);border-top:1px solid var(--fd-line);border-bottom:1px solid var(--fd-line)}
+.fd-about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px}
+.fd-about-aside h2{font-size:clamp(24px,3vw,32px)}
+.fd-about-aside .fd-note{
+  background:#fbeccd;border-left:4px solid var(--fd-amber-deep);
+  padding:16px 18px;border-radius:0 12px 12px 0;font-size:14px;color:#6a4f18;
+}
+.fd-about-text p{font-size:15.5px;color:var(--fd-ink-soft);text-align:justify}
+.fd-about-text h3{font-size:18px;margin:26px 0 10px;color:var(--fd-ink)}
+.fd-about-text h3::before{content:"◆";color:var(--fd-amber);margin-right:8px;font-size:12px;vertical-align:2px}
+
+/* ===== 焦点视频 ===== */
+.fd-focus-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}
+.fd-focus-grid .fd-side{display:grid;gap:18px}
+.fd-card{
+  background:var(--fd-paper-2);border:1px solid var(--fd-line);border-radius:var(--fd-radius);
+  overflow:hidden;transition:.25s;display:flex;flex-direction:column;
+}
+.fd-card:hover{transform:translateY(-4px);box-shadow:var(--fd-shadow);border-color:#d8cbb4}
+.fd-cover{position:relative;aspect-ratio:16/9;background:#d9d2c5;overflow:hidden}
+.fd-cover img{width:100%;height:100%;object-fit:cover}
+.fd-cover::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(20,16,10,.55) 100%);
+}
+.fd-cover .fd-play-sm{
+  position:absolute;left:14px;top:14px;z-index:2;
+  width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);
+  display:grid;place-items:center;font-size:13px;color:var(--fd-dark);
+}
+.fd-cover .fd-cover-tag{
+  position:absolute;right:12px;bottom:12px;z-index:2;font-size:12px;
+  background:rgba(43,47,58,.82);color:#f7edd9;padding:3px 10px;border-radius:999px;
+}
+.fd-card-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column}
+.fd-card-body h3{font-size:16.5px;margin-bottom:6px}
+.fd-card-body h3 a:hover{color:var(--fd-amber-deep)}
+.fd-card-body p{font-size:13.5px;color:var(--fd-ink-soft);margin-bottom:12px}
+.fd-card-meta{
+  display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--fd-ink-soft);
+  margin-top:auto;flex-wrap:wrap;
+}
+.fd-avatar{
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:12px;font-weight:700;color:#fff;flex:none;
+}
+.fd-card-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.fd-act{
+  font-size:12.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--fd-line);
+  background:#fff;color:var(--fd-ink-soft);transition:.18s;
+}
+.fd-act:hover{border-color:var(--fd-amber-deep);color:var(--fd-amber-deep)}
+.fd-act.is-on{background:#fbeccd;border-color:#f1d69c;color:var(--fd-amber-deep);font-weight:600}
+.fd-focus-main .fd-card-body h3{font-size:21px}
+
+/* ===== 视频流 ===== */
+.fd-stream{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fd-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.fd-tab{
+  font-size:13.5px;padding:7px 16px;border-radius:999px;border:1px solid var(--fd-line);
+  background:var(--fd-paper-2);color:var(--fd-ink-soft);
+}
+.fd-tab.is-on{background:var(--fd-dark);color:var(--fd-amber);border-color:var(--fd-dark);font-weight:600}
+
+/* ===== 专题 ===== */
+.fd-topics{background:var(--fd-dark);color:#f2ead9}
+.fd-topics .fd-eyebrow{color:var(--fd-amber)}
+.fd-topics .fd-eyebrow::before{background:var(--fd-amber)}
+.fd-topics .fd-sec-head p{color:#b9b1a2}
+.fd-topic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.fd-topic{
+  background:#343947;border:1px solid #3f4453;border-radius:var(--fd-radius);
+  overflow:hidden;transition:.25s;display:flex;flex-direction:column;
+}
+.fd-topic:hover{transform:translateY(-4px);border-color:var(--fd-amber)}
+.fd-topic .fd-cover{border-radius:0}
+.fd-topic .fd-cover::after{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.65))}
+.fd-topic-body{padding:15px 16px 18px}
+.fd-topic-body h3{font-size:15.5px;color:#fdf8ee}
+.fd-topic-body p{font-size:12.5px;color:#a9a294;margin:0}
+.fd-topic-state{
+  display:inline-block;margin-top:11px;font-size:11.5px;padding:3px 10px;border-radius:999px;
+  background:rgba(233,180,76,.16);color:var(--fd-amber);border:1px solid rgba(233,180,76,.4);
+}
+
+/* ===== 创作者 ===== */
+.fd-creators-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fd-creator{
+  background:var(--fd-paper-2);border:1px solid var(--fd-line);border-radius:var(--fd-radius);
+  padding:22px;transition:.25s;text-align:left;
+}
+.fd-creator:hover{box-shadow:var(--fd-shadow);transform:translateY(-3px)}
+.fd-creator-top{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.fd-creator-avatar{
+  width:56px;height:56px;border-radius:18px;display:grid;place-items:center;
+  font-size:22px;font-weight:800;color:#fff;flex:none;letter-spacing:.02em;
+}
+.fd-creator-top h3{font-size:16.5px;margin:0}
+.fd-creator-top span{font-size:12.5px;color:var(--fd-ink-soft)}
+.fd-creator p{font-size:13.5px;color:var(--fd-ink-soft);margin-bottom:14px}
+.fd-creator-stats{display:flex;gap:20px;font-size:12.5px;color:var(--fd-ink-soft);margin-bottom:14px}
+.fd-creator-stats b{display:block;color:var(--fd-ink);font-size:15px}
+.fd-creator-link{font-size:13px;color:var(--fd-amber-deep);font-weight:600}
+
+/* ===== 评价 ===== */
+.fd-quotes{background:var(--fd-paper-2);border-top:1px solid var(--fd-line);border-bottom:1px solid var(--fd-line)}
+.fd-quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fd-quote{
+  background:var(--fd-paper);border-radius:var(--fd-radius);padding:20px 22px;
+  border:1px solid var(--fd-line);position:relative;
+}
+.fd-quote::before{
+  content:"“";position:absolute;right:18px;top:4px;font-size:64px;color:#ece2cd;line-height:1;font-family:Georgia,serif;
+}
+.fd-quote p{font-size:14px;color:var(--fd-ink-soft);position:relative;z-index:1;margin-bottom:14px}
+.fd-quote-who{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--fd-ink-soft)}
+.fd-quote-who b{color:var(--fd-ink);font-size:13.5px}
+.fd-stars{color:var(--fd-amber-deep);font-size:12px;letter-spacing:2px}
+
+/* ===== 动态 + FAQ ===== */
+.fd-split{display:grid;grid-template-columns:1.05fr .95fr;gap:48px}
+.fd-timeline{border-left:2px solid var(--fd-line);padding-left:22px;display:grid;gap:22px}
+.fd-timeline-item{position:relative}
+.fd-timeline-item::before{
+  content:"";position:absolute;left:-29px;top:7px;width:12px;height:12px;border-radius:50%;
+  background:var(--fd-paper);border:3px solid var(--fd-amber-deep);
+}
+.fd-timeline-item time{font-size:12.5px;color:var(--fd-amber-deep);font-weight:600;letter-spacing:.04em}
+.fd-timeline-item h3{font-size:15.5px;margin:3px 0 5px}
+.fd-timeline-item p{font-size:13.5px;color:var(--fd-ink-soft);margin:0}
+.fd-faq details{
+  border-bottom:1px solid var(--fd-line);padding:14px 2px;
+}
+.fd-faq summary{
+  cursor:pointer;font-weight:600;font-size:15px;list-style:none;
+  display:flex;justify-content:space-between;gap:14px;align-items:center;
+}
+.fd-faq summary::-webkit-details-marker{display:none}
+.fd-faq summary::after{content:"+";color:var(--fd-amber-deep);font-size:20px;font-weight:400;transition:.2s}
+.fd-faq details[open] summary::after{transform:rotate(45deg)}
+.fd-faq details p{font-size:14px;color:var(--fd-ink-soft);margin:10px 0 2px}
+
+/* ===== 合作 & 联系 ===== */
+.fd-partners{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.fd-partner{
+  padding:9px 18px;border-radius:12px;background:var(--fd-paper-2);border:1px solid var(--fd-line);
+  font-size:13.5px;color:var(--fd-ink-soft);font-weight:600;
+}
+.fd-contact-card{
+  background:var(--fd-dark);color:#f2ead9;border-radius:22px;padding:36px;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;
+}
+.fd-contact-card h2{color:#fdf8ee;font-size:clamp(22px,3vw,30px)}
+.fd-contact-card p{color:#b9b1a2;font-size:14.5px}
+.fd-contact-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.fd-contact-card .fd-btn-ghost{border-color:var(--fd-amber);color:var(--fd-amber)}
+.fd-contact-card .fd-btn-ghost:hover{background:rgba(233,180,76,.14)}
+.fd-contact-info{display:grid;gap:12px;font-size:13.5px;color:#c9c1b2}
+.fd-contact-info b{color:#fdf8ee;display:block;font-size:12.5px;letter-spacing:.1em;margin-bottom:2px}
+
+/* ===== 页脚 ===== */
+.fd-foot{background:#20232c;color:#a8a193;padding:54px 0 26px;font-size:13.5px}
+.fd-foot-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr .8fr;gap:34px;margin-bottom:36px}
+.fd-foot h4{color:#f4ecdd;font-size:14.5px;letter-spacing:.08em;margin-bottom:14px}
+.fd-foot a:hover{color:var(--fd-amber)}
+.fd-foot ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.fd-foot-brand .fd-logo{color:#f4ecdd;margin-bottom:14px}
+.fd-foot-brand p{color:#8d8779;font-size:13px;max-width:26em}
+.fd-foot-bottom{
+  border-top:1px solid #343842;padding-top:20px;display:flex;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;font-size:12.5px;color:#7d7869;
+}
+
+/* ===== Toast / 弹窗 ===== */
+.fd-toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,24px);
+  background:var(--fd-dark);color:#fdf8ee;padding:11px 22px;border-radius:999px;
+  font-size:13.5px;opacity:0;pointer-events:none;transition:.28s;z-index:200;
+  box-shadow:0 10px 30px rgba(0,0,0,.28);
+}
+.fd-toast.is-show{opacity:1;transform:translate(-50%,0)}
+.fd-modal{
+  position:fixed;inset:0;background:rgba(24,21,16,.55);display:none;
+  align-items:center;justify-content:center;padding:22px;z-index:180;
+}
+.fd-modal.is-open{display:flex}
+.fd-modal-box{
+  background:var(--fd-paper-2);border-radius:22px;max-width:520px;width:100%;
+  padding:30px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.3);
+}
+.fd-modal-box h3{font-size:19px;margin-bottom:8px}
+.fd-modal-box p{font-size:14px;color:var(--fd-ink-soft)}
+.fd-modal-close{
+  position:absolute;right:16px;top:14px;font-size:20px;color:var(--fd-ink-soft);
+}
+.fd-modal-box label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px}
+.fd-modal-box input,.fd-modal-box textarea{
+  width:100%;border:1px solid var(--fd-line);border-radius:12px;padding:10px 13px;
+  font-size:14px;font-family:inherit;background:#fff;outline:none;
+}
+.fd-modal-box input:focus,.fd-modal-box textarea:focus{border-color:var(--fd-amber-deep)}
+.fd-share-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.fd-share-row button{
+  padding:9px 18px;border-radius:999px;background:var(--fd-paper);border:1px solid var(--fd-line);
+  font-size:13.5px;
+}
+.fd-share-row button:hover{border-color:var(--fd-amber-deep);color:var(--fd-amber-deep)}
+.fd-top-btn{
+  position:fixed;right:22px;bottom:26px;width:46px;height:46px;border-radius:50%;
+  background:var(--fd-dark);color:var(--fd-amber);font-size:18px;display:none;
+  place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.22);z-index:90;
+}
+.fd-top-btn.is-show{display:grid}
+
+/* ===== 响应式 ===== */
+@media (max-width:1000px){
+  .fd-hero-grid,.fd-about-grid,.fd-split,.fd-contact-card{grid-template-columns:1fr}
+  .fd-focus-grid{grid-template-columns:1fr}
+  .fd-stream,.fd-creators-grid,.fd-quote-grid{grid-template-columns:repeat(2,1fr)}
+  .fd-topic-grid{grid-template-columns:repeat(2,1fr)}
+  .fd-foot-grid{grid-template-columns:1fr 1fr}
+  .fd-hero-visual{order:-1}
+  .fd-hero-cover{aspect-ratio:16/10}
+}
+@media (max-width:720px){
+  .fd-nav{display:none}
+  .fd-nav-toggle{display:grid;place-items:center}
+  .fd-search input{width:104px}
+  .fd-stream,.fd-creators-grid,.fd-quote-grid,.fd-topic-grid{grid-template-columns:1fr}
+  .fd-hero-stats{gap:22px}
+  .fd-sec{padding:52px 0}
+  .fd-contact-card{padding:26px}
+  .fd-hero-badge{left:8px;bottom:-14px;max-width:200px}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶区：公告条 + 页头 -->
+<div class="fd-sticky">
+  <div class="fd-notice">
+    <div class="fd-wrap fd-notice-inner">
+      <span class="fd-notice-tag">官方发布</span>
+      <div class="fd-notice-list">
+        <span><b>11/18</b> 「城市清晨」主题影像征集结果公布</span>
+        <span><b>11/16</b> 2026 冬季创作挑战赛开放报名</span>
+        <span><b>11/14</b> 创作者激励计划第二期上线</span>
+      </div>
+    </div>
+  </div>
+  <header class="fd-wrap fd-head">
+    <a class="fd-logo" href="#top" aria-label="返回顶部">
+      <span class="fd-logo-mark">▶</span>
+      <span>流动影像<small>FLOW VIDEO</small></span>
+    </a>
+    <nav class="fd-nav" aria-label="主导航">
+      <a href="#about">品牌解析</a>
+      <a href="#focus">焦点内容</a>
+      <a href="#stream">影像社区</a>
+      <a href="#topics">专题企划</a>
+      <a href="#creators">创作者</a>
+      <a href="#news">企业动态</a>
+      <a href="#contact">联系我们</a>
+    </nav>
+    <div class="fd-head-tools">
+      <form class="fd-search" role="search" onsubmit="return false;">
+        <input id="fdSearchInput" type="search" placeholder="搜索影像 / 创作者" aria-label="站内搜索">
+        <button type="button" id="fdSearchBtn">搜索</button>
+      </form>
+      <button class="fd-nav-toggle" id="fdNavToggle" aria-label="展开导航" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <nav class="fd-wrap fd-mobile-nav" id="fdMobileNav" aria-label="移动端导航">
+    <a href="#about">品牌解析</a>
+    <a href="#focus">焦点内容</a>
+    <a href="#stream">影像社区</a>
+    <a href="#topics">专题企划</a>
+    <a href="#creators">创作者</a>
+    <a href="#news">企业动态</a>
+    <a href="#contact">联系我们</a>
+  </nav>
+</div>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="fd-hero fd-anchor" id="hero">
+    <div class="fd-wrap fd-hero-grid">
+      <div>
+        <span class="fd-eyebrow">官方网站 · 品牌视频社区</span>
+        <h1>流动影像<em>，</em>记录每一个真实的日常</h1>
+        <p class="fd-hero-lead">作为一家持续运营的影像品牌企业，流动影像以原创高清视频为核心，为创作者与用户搭建温暖、真实、多元的内容生态。从清晨的街道到手作的桌面，我们把生活里细小的光，做成值得反复观看的片子。</p>
+        <div class="fd-hero-tags">
+          <span class="fd-chip is-hot"># 冬季创作挑战赛</span>
+          <span class="fd-chip"># 城市清晨</span>
+          <span class="fd-chip"># 手作现场</span>
+          <span class="fd-chip"># 一人食</span>
+        </div>
+        <div class="fd-hero-actions">
+          <a class="fd-btn fd-btn-primary" href="#focus">进入焦点内容</a>
+          <a class="fd-btn fd-btn-ghost" href="#creators">认识创作者</a>
+          <button class="fd-btn fd-btn-ghost" data-fd-open="submit">我要投稿</button>
+        </div>
+        <div class="fd-hero-stats">
+          <div class="fd-stat"><b data-fd-count="12800">0</b><span>原创影像作品</span></div>
+          <div class="fd-stat"><b data-fd-count="460">0</b><span>持续合作创作者</span></div>
+          <div class="fd-stat"><b data-fd-count="96">0</b><span>万次月度观看</span></div>
+        </div>
+      </div>
+      <div class="fd-hero-visual">
+        <div class="fd-hero-cover">
+          <img alt="清晨街道上手持咖啡的行人，流动影像品牌主视觉" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 640'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f6e6c4'/%3E%3Cstop offset='1' stop-color='%23e0a94f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='640' fill='url(%23g1)'/%3E%3Ccircle cx='620' cy='150' r='86' fill='%23fff6e2' opacity='.85'/%3E%3Cpath d='M0 470 L180 380 L330 430 L520 340 L800 440 L800 640 L0 640 Z' fill='%23c98f3f' opacity='.55'/%3E%3Crect x='90' y='250' width='120' height='230' rx='8' fill='%23795a3a' opacity='.7'/%3E%3Crect x='240' y='300' width='90' height='180' rx='8' fill='%238a6a45' opacity='.65'/%3E%3Ccircle cx='340' cy='420' r='26' fill='%23f7e7c9'/%3E%3Ccircle cx='300' cy='430' r='20' fill='%232b2f3a' opacity='.8'/%3E%3C/svg%3E">
+          <span class="fd-play" aria-hidden="true">▶</span>
+        </div>
+        <div class="fd-hero-badge">
+          <b>本周精选 · 城市清晨</b>
+          <span>12 位创作者，18 支短片，记录城市醒来的半个小时。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌解析 -->
+  <section class="fd-sec fd-about fd-anchor" id="about">
+    <div class="fd-wrap fd-about-grid">
+      <div class="fd-about-aside">
+        <span class="fd-eyebrow">品牌深度解析</span>
+        <h2>我们为什么做影像这件事</h2>
+        <div class="fd-note">
+          流动影像官方网站，是一个以日常记录、经验分享与创作幕后为核心的品牌视频社区。我们希望每一支片子，都能被认真对待、被长久看见。
+        </div>
+      </div>
+      <div class="fd-about-text">
+        <p>流动影像诞生于一次很普通的拍摄。几个人在菜市场门口架起一台相机，拍卖豆腐的阿姨如何把一块嫩豆腐完整地挪进袋子，拍了四十分钟，剪成两分半。片子发出去之后，收到最多的留言是：“原来我家楼下也有这样的手艺。”那一刻我们确认，值得被记录的东西，往往就在最不被注意的日常里。于是我们把这件小事做成了一家持续运营的影像品牌企业，用一套完整的内容生态，把散落各处的日常重新连成一条线。</p>
+        <p>作为国内较早专注日常与生活方式影像的平台，我们把“原创”和“真实”写进了底层规则。所有进入焦点的内容都由创作者本人拍摄与剪辑，团队只做推荐与校对，不做改写。用户看到的每一支短片，背后都能找到具体的拍摄者、具体的拍摄地点和具体的拍摄理由。这种可追溯感，是流动影像区别于泛内容平台的地方，也是我们坚持“品质优先于数量”的原因。</p>
+        <h3>内容生态：从一支片子到一条生长线</h3>
+        <p>在流动影像，一支片子不是终点。创作者上传作品后，会进入社区的分发与讨论，随后可能被邀请参与专题企划、进入品牌共创项目、或是成为下一季创作挑战的领队。企业合作的内容会明确标注合作方与拍摄标准，官方发布则统一标注来源与审核时间。我们希望内容生态是有层级的：社区日常、专题企划、品牌共创三条线并行，各自有明确的入口和规则，让用户知道自己在看什么，也让创作者知道自己处在哪个阶段。</p>
+        <h3>创作者：被看见，也被尊重</h3>
+        <p>目前长期活跃在流动影像的创作者超过四百位，分布在城市探索、手作、美食、户外、音乐现场、知识科普等方向。我们不追求头部集中，而是通过新人榜、口碑榜和专题推荐，让新加入的创作者在前三个月内有机会被看见。对于优质但节奏较慢的创作者，平台提供创作激励与设备支持；对于企业类合作，我们要求合作内容必须保留创作者本人的表达习惯，不因商业合作而改变叙事方式。这也是很多创作者愿意长期留下的原因。</p>
+        <h3>品质与责任：让影像值得反复观看</h3>
+        <p>我们对画质、声音和字幕都有基础要求：高清是起点，声音干净是底线，字幕必须与口播一致。上传页面会给出检查清单，帮助创作者在发布前自查。社会责任方面，流动影像持续参与城市公共文化记录项目，为社区、老手艺人和小型演出团体提供免费拍摄支持，相关影像进入公开影像库，供学习与公益使用。这些内容不追求流量，但构成品牌口碑的重要部分。</p>
+        <h3>未来：把社区做得更慢一点</h3>
+        <p>我们不打算把流动影像做成一个无限加速的内容工厂。接下来一年，团队会把更多精力放在社区运营的细节上：更清晰的投稿指引、更友好的评论氛围、更透明的榜单规则，以及更完整的创作者成长路径。我们相信，一个值得信赖的品牌官网，不只是展示窗口，更是规则与承诺的公开处。流动影像会继续在这条路上，缓慢但稳定地生长。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点内容 -->
+  <section class="fd-sec fd-anchor" id="focus">
+    <div class="fd-wrap">
+      <div class="fd-sec-head">
+        <span class="fd-eyebrow">焦点内容</span>
+        <h2>本周值得完整看完的几支片子</h2>
+        <p>编辑部从社区近千支新作中挑出这些作品，题材各不相同，但都保留了拍摄者自己的呼吸节奏。</p>
+      </div>
+      <div class="fd-focus-grid">
+        <article class="fd-card fd-focus-main">
+          <div class="fd-cover">
+            <img alt="城市清晨专题片：早餐铺升起的热气与街道光影" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23cfd8e8'/%3E%3Cstop offset='1' stop-color='%23f4e3cb'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23g2)'/%3E%3Crect x='0' y='300' width='800' height='150' fill='%23907a5e'/%3E%3Crect x='110' y='190' width='150' height='120' fill='%23b8a184'/%3E%3Crect x='300' y='220' width='120' height='90' fill='%23a58d70'/%3E%3Cpath d='M520 300 L580 210 L640 300 Z' fill='%236f5c45'/%3E%3Ccircle cx='600' cy='110' r='52' fill='%23f2c879' opacity='.8'/%3E%3Cpath d='M470 300 q30 -60 60 0' stroke='%23fff2d8' stroke-width='8' fill='none' opacity='.7'/%3E%3C/svg%3E">
+            <span class="fd-play-sm" aria-hidden="true">▶</span>
+            <span class="fd-cover-tag">专题首发</span>
+          </div>
+          <div class="fd-card-body">
+            <h3><a href="#focus">城市清晨：半小时里醒来的十二种方式</a></h3>
+            <p>从早点摊的第一笼包子，到写字楼电梯里的第一句问候，我们跟着十二位创作者，拍下同一座城市醒来的过程。</p>
+            <div class="fd-card-meta">
+              <span class="fd-avatar" style="background:#8a6a45">城</span>
+              <span>城市观察局 · 18:42 · 4.2 万次观看</span>
+            </div>
+            <div class="fd-card-actions">
+              <button class="fd-act" data-fd-like>♡ 赞 <em data-fd-num>1268</em></button>
+              <button class="fd-act" data-fd-fav>♡ 收藏</button>
+              <button class="fd-act" data-fd-open="share">分享</button>
+            </div>
+          </div>
+        </article>
+        <div class="fd-side">
+          <article class="fd-card">
+            <div class="fd-cover">
+              <img alt="手作现场：木工房里打磨一块胡桃木板的近景" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23c8b49a'/%3E%3Crect x='0' y='300' width='800' height='150' fill='%23825f42'/%3E%3Crect x='180' y='180' width='440' height='120' rx='10' fill='%23a67c52'/%3E%3Crect x='230' y='150' width='80' height='40' rx='6' fill='%235f4a35'/%3E%3Ccircle cx='560' cy='360' r='34' fill='%23d9c4a5'/%3E%3Cpath d='M120 300 L220 220' stroke='%23e8d7bd' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E">
+              <span class="fd-play-sm" aria-hidden="true">▶</span>
+            </div>
+            <div class="fd-card-body">
+              <h3><a href="#focus">打磨一块胡桃木：木工房里的四十分钟</a></h3>
+              <p>没有旁白，只有砂纸和木头的摩擦声。</p>
+              <div class="fd-card-meta">
+                <span class="fd-avatar" style="background:#6f5c45">木</span>
+                <span>木作阿森 · 12 分钟 · 8621 次观看</span>
+              </div>
+              <div class="fd-card-actions">
+                <button class="fd-act" data-fd-like>♡ 赞 <em data-fd-num>436</em></button>
+                <button class="fd-act" data-fd-fav>♡ 收藏</button>
+              </div>
+            </div>
+          </article>
+          <article class="fd-card">
+            <div class="fd-cover">
+              <img alt="一人食晚餐：灶台上的小锅与暖黄灯光" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%233f4a3f'/%3E%3Crect x='0' y='250' width='800' height='200' fill='%23596456'/%3E%3Ccircle cx='400' cy='280' r='110' fill='%23c9a35a'/%3E%3Ccircle cx='400' cy='280' r='84' fill='%23e8c887'/%3E%3Ccircle cx='400' cy='280' r='52' fill='%23a9682f'/%3E%3Cpath d='M320 120 q40 -40 80 0' stroke='%23f5e6c8' stroke-width='10' fill='none' opacity='.55'/%3E%3Cpath d='M400 120 q40 -40 80 0' stroke='%23f5e6c8' stroke-width='10' fill='none' opacity='.4'/%3E%3C/svg%3E">
+                <span class="fd-play-sm" aria-hidden="true">▶</span>
+              </div>
+            <div class="fd-card-body">
+              <h3><a href="#focus">一个人的晚餐，也值得认真摆盘</a></h3>
+              <p>十五分钟家常菜记录，附完整备菜过程。</p>
+              <div class="fd-card-meta">
+                <span class="fd-avatar" style="background:#a9682f">食</span>
+                <span>小满的厨房 · 9 分钟 · 1.1 万次观看</span>
+              </div>
+              <div class="fd-card-actions">
+                <button class="fd-act" data-fd-like>♡ 赞 <em data-fd-num>734</em></button>
+                <button class="fd-act" data-fd-fav>♡ 收藏</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 影像社区视频流 -->
+  <section class="fd-sec fd-anchor" id="stream">
+    <div class="fd-wrap">
+      <div class="fd-sec-head">
+        <span class="fd-eyebrow">影像社区</span>
+        <h2>正在被反复观看的原创作品</h2>
+        <p>按题材浏览社区新作，点开标签可快速筛选。每支作品都标注了作者与拍摄地，方便你顺着线索找到同好。</p>
+      </div>
+      <div class="fd-tabs" id="fdTabs">
+        <button class="fd-tab is-on" data-fd-filter="all">全部</button>
+        <button class="fd-tab" data-fd-filter="city">城市探索</button>
+        <button class="fd-tab" data-fd-filter="craft">手作</button>
+        <button class="fd-tab" data-fd-filter="food">美食</button>
+        <button class="fd-tab" data-fd-filter="outdoor">户外</button>
+        <button class="fd-tab" data-fd-filter="talk">访谈</button>
+      </div>
+      <div class="fd-stream" id="fdStream">
+
+        <article class="fd-card" data-fd-cat="city">
+          <div class="fd-cover">
+            <img alt="城市探索：傍晚天桥上骑行者的剪影" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23e8a05c'/%3E%3Cstop offset='1' stop-color='%235c4a6e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23g3)'/%3E%3Ccircle cx='560' cy='140' r='60' fill='%23f7d9a0' opacity='.85'/%3E%3Crect x='0' y='330' width='800' height='120' fill='%233a3346'/%3E%3Cpath d='M120 330 L200 330 L260 260 L340 260' stroke='%232a2531' stroke-width='12' fill='none'/%3E%3Ccircle cx='330' cy='278' r='16' fill='%232a2531'/%3E%3Ccircle cx='420' cy='300' r='22' fill='%232a2531'/%3E%3Ccircle cx='470' cy='300' r='22' fill='%232a2531'/%3E%3C/svg%3E">
+            <span class="fd-play-sm" aria-hidden="true">▶</span>
+          </div>
+          <div class="fd-card-body">
+            <h3><a href="#stream">骑行穿过三座桥，记录城市入夜的最后一段光</a></h3>
+            <p>横屏长镜头，风声为主，适合戴耳机看。</p>
+            <div class="fd-card-meta">
+              <span class="fd-avatar" style="background:#5c4a6e">骑</span>
+              <span>阿野在路上 · 8 分钟 · 2.3 万次观看</span>
+            </div>
+            <div class="fd-card-actions">
+              <button class="fd-act" data-fd-like>♡ 赞 <em data-fd-num>980</em></button>
+              <button class="fd-act" data-fd-fav>♡ 收藏</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="fd-card" data-fd-cat="craft">
+          <div class="fd-cover">
+            <img alt="手作：陶艺工作室里拉坯的手部特写" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23e2d7c5'/%3E%3Ccircle cx='400' cy='300' r='150' fill='%23b08968'/%3E%3Ccircle cx='400' cy='290' r='96' fill='%23d6bfa2'/%3E%3Cpath d='M300 260 q40 -80 100 -40 q60 40 100 0' stroke='%238a6a4f' stroke-width='10' fill='none'/%3E%3Crect x='0' y='380' width='800' height='70' fill='%23c6b49b'/%3E%3C/svg%3E">
+            <span class="fd-play-sm" aria-hidden="true">▶</span>
+          </div>
+          <div class="fd-card-body">
+            <h3><a href="#stream">第一次拉坯失败三次之后，我学会了什么</a></h3>
+            <p>陶艺新手记录，附工具清单与避坑提示。</p>
+            <div class="fd-card-meta">
+              <span class="fd-avatar" style="background:#b08968">陶</span>
+              <span>陶土日记 · 11 分钟 · 6120 次观看</span>
+            </div>
+            <div class="fd-card-actions">
+              <button class="fd-act" data-fd-like>♡ 赞 <em data-fd-num>318</em></button>
+              <button class="fd-act" data-fd-fav>♡ 收藏</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="fd-card" data-fd-cat="food">
+          <div class="fd-cover">
+            <img alt="美食：案板上切开的番茄与橄榄油" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23e8dbc5'/%3E%3Crect x='60' y='160' width='680' height='200' rx='18' fill='%23c9a97a'/%3E%3Ccircle cx='270' cy='260' r='66' fill='%23c8443a'/%3E%3Ccircle cx='270' cy='260' r='34' fill='%23e88a72'/%3E%3Cpath d='M420 220 l70 90 l-70 0 Z' fill='%236f8a4a'/%3E%3Ccircle cx='560' cy='270' r='30' fill='%23e5c15a'/%3E%3C/svg%3E">
+            <span class="fd-play-sm" aria-hidden="true">▶</span>
+          </div>
+          <div class="fd-card-body">
+            <h3><a href="#stream">十五分钟番茄意面：厨房新手的第一课</a></h3>
+            <p>从备菜到装盘，全程无快剪。</p>
+            <div class="fd-card-meta">
+              <span class="fd-avatar" style="background:#c8443a">食</span>
+              <span>小满的厨房 · 7 分钟 · 1.6 万次观看</span>
+            </div>
+            <div class="fd-card-actions">
+              <button class="fd-act" data-fd-like>♡ 赞 <em data-fd-num>812</em></button>
+              <button class="fd-act" data-fd-fav>♡ 收藏</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="fd-card" data-fd-cat="outdoor">
+          <div class="fd-cover">
+            <img alt="户外：山脊线上远足者的背影与云海" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%2389a8b8'/%3E%3Cpath d='M0 320 L160 200 L300 300 L470 170 L650 300 L800 220 L800 450 L0 450 Z' fill='%234f6b5c'/%3E%3Cpath d='M0 360 L200 280 L360 350 L560 250 L800 340 L800 450 L0 450 Z' fill='%233a5147'/%3E%3Ccircle cx='640' cy='110' r='46' fill='%23f2e3c0' opacity='.8'/%3E%3Cpath d='M330 300 l14 -34 l14 34 Z' fill='%231f2b26'/%3E%3C/svg%3E">
+            <span class="fd-play-sm" aria-hidden="true">▶</span>
+          </div>
+          <div class="fd-card-body">
+            <h3><a href="#stream">周末轻徒步：六公里山脊线上的四季痕迹</a></h3>
+            <p>路线攻略与装备清单一并附上。</p>
+            <div class="fd-card-meta">
+              <span class="fd-avatar" style="background:#4f6b5c">野</span>
+              <span>山野笔记 · 14 分钟 · 9034 次观看</span>
+            </div>
+            <div class="fd-card-actions">
+              <button class="fd-act" data-fd-like>♡ 赞 <em data-fd-num>623</em></button>
+              <button class="fd-act" data-fd-fav>♡ 收藏</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="fd-card" data-fd-cat="talk">
+          <div class="fd-cover">
+            <img alt="人物访谈：老式理发店里镜前对谈的两个身影" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%237a5a44'/%3E%3Crect x='0' y='300' width='800' height='150' fill='%235a4130'/%3E%3Crect x='160' y='90' width='200' height='250' rx='14' fill='%23c9b39a'/%3E%3Crect x='440' y='90' width='200' height='250' rx='14' fill='%23b59c82'/%3E%3Ccircle cx='260' cy='220' r='44' fill='%238a6a50'/%3E%3Ccircle cx='540' cy='220' r='44' fill='%236d513a'/%3E%3Crect x='360' y='150' width='80' height='160' rx='10' fill='%233d2e22'/%3E%3C/svg%3E">
+            <span class="fd-play-sm" aria-hidden="true">▶</span>
+          </div>
+          <div class="fd-card-body">
+            <h3><a href="#stream">在巷子里开了三十年的理发店，还留着老式转椅</a></h3>
+            <p>一次慢节奏的人物访谈，讲手艺也讲时间。</p>
+            <div class="fd-card-meta">
+              <span class="fd-avatar" style="background:#7a5a44">访</span>
+              <span>巷口访谈录 · 22 分钟 · 1.4 万次观看</span>
+            </div>
+            <div class="fd-card-actions">
+              <button class="fd-act" data-fd-like>♡ 赞 <em data-fd-num>1044</em></button>
+              <button class="fd-act" data-fd-fav>♡ 收藏</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="fd-card" data-fd-cat="city">
+          <div class="fd-cover">
+            <img alt="城市探索：老城区晾衣杆与密集窗格" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23b7c2c9'/%3E%3Crect x='0' y='0' width='260' height='450' fill='%238e9aa3'/%3E%3Crect x='280' y='60' width='220' height='390' fill='%23a3aeb6'/%3E%3Crect x='520' y='120' width='280' height='330' fill='%23909ca5'/%3E%3Cg fill='%234c5a63'%3E%3Crect x='40' y='70' width='40' height='50'/%3E%3Crect x='110' y='70' width='40' height='50'/%3E%3Crect x='40' y='160' width='40' height='50'/%3E%3Crect x='300' y='120' width='46' height='54'/%3E%3Crect x='390' y='120' width='46' height='54'/%3E%3Crect x='300' y='220' width='46' height='54'/%3E%3Crect x='580' y='180' width='50' height='60'/%3E%3C/g%3E%3Cpath d='M150 300 L250 300' stroke='%23e6ddcf' stroke-width='5'/%3E%3C/svg%3E">
+            <span class="fd-play-sm" aria-hidden="true">▶</span>
+          </div>
+          <div class="fd-card-body">
+            <h3><a href="#stream">老城区的窗户：一百种晾衣服的方式</a></h3>
+            <p>静态镜头组接，观察城市生活的褶皱。</p>
+            <div class="fd-card-meta">
+              <span class="fd-avatar" style="background:#8e9aa3">窗</span>
+              <span>城市观察局 · 6 分钟 · 5127 次观看</span>
+            </div>
+            <div class="fd-card-actions">
+              <button class="fd-act" data-fd-like>♡ 赞 <em data-fd-num>287</em></button>
+              <button class="fd-act" data-fd-fav>♡ 收藏</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题企划 -->
+  <section class="fd-sec fd-topics fd-anchor" id="topics">
+    <div class="fd-wrap">
+      <div class="fd-sec-head">
+        <span class="fd-eyebrow">专题企划</span>
+        <h2>品牌持续运营的四条内容线</h2>
+        <p>专题由官方发布选题，创作者自由报名，成片统一进入企划合集。每条线都有明确的更新节奏与参与方式。</p>
+      </div>
+      <div class="fd-topic-grid">
+        <article class="fd-topic">
+          <div class="fd-cover">
+            <img alt="专题企划：城市清晨的早餐摊热气" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23e4c98f'/%3E%3Crect x='0' y='300' width='800' height='150' fill='%23936f47'/%3E%3Ccircle cx='400' cy='290' r='120' fill='%23f4e2bd' opacity='.9'/%3E%3Cpath d='M330 180 q30 -60 60 0' stroke='%23fff8ea' stroke-width='9' fill='none' opacity='.75'/%3E%3Cpath d='M430 180 q30 -60 60 0' stroke='%23fff8ea' stroke-width='9' fill='none' opacity='.5'/%3E%3C/svg%3E">
+          </div>
+          <div class="fd-topic-body">
+            <h3>城市清晨</h3>
+            <p>拍摄清晨六点到八点的城市切片，记录街区醒来的瞬间。</p>
+            <span class="fd-topic-state">第二季 · 更新中</span>
+          </div>
+        </article>
+        <article class="fd-topic">
+          <div class="fd-cover">
+            <img alt="专题企划：手作工坊里的木屑与工具" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23b99a76'/%3E%3Crect x='0' y='280' width='800' height='170' fill='%237a5c3f'/%3E%3Cpath d='M150 280 L340 180 L520 280 Z' fill='%23e0c9a6'/%3E%3Crect x='420' y='200' width='26' height='110' rx='8' fill='%234d3a28'/%3E%3Ccircle cx='620' cy='300' r='40' fill='%23d6bd97'/%3E%3C/svg%3E">
+          </div>
+          <div class="fd-topic-body">
+            <h3>手作现场</h3>
+            <p>保留完整工序与真实音效，让手艺被看清楚。</p>
+            <span class="fd-topic-state">常设 · 每月上新</span>
+          </div>
+        </article>
+        <article class="fd-topic">
+          <div class="fd-cover">
+            <img alt="专题企划：山间露营帐篷与夜灯" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%232e3d46'/%3E%3Cpath d='M0 330 L200 240 L400 320 L620 230 L800 310 L800 450 L0 450 Z' fill='%23222e35'/%3E%3Cpath d='M300 340 L380 250 L460 340 Z' fill='%23c98f3f'/%3E%3Ccircle cx='380' cy='330' r='12' fill='%23f4d48a'/%3E%3Cg fill='%23f4e3bb' opacity='.7'%3E%3Ccircle cx='150' cy='80' r='3'/%3E%3Ccircle cx='260' cy='50' r='2.5'/%3E%3Ccircle cx='560' cy='70' r='3'/%3E%3Ccircle cx='680' cy='120' r='2.5'/%3E%3C/g%3E%3C/svg%3E">
+          </div>
+          <div class="fd-topic-body">
+            <h3>周末去野</h3>
+            <p>轻户外路线与营地记录，含交通与装备攻略。</p>
+            <span class="fd-topic-state">第三期 · 报名中</span>
+          </div>
+        </article>
+        <article class="fd-topic">
+          <div class="fd-cover">
+            <img alt="专题企划：访谈录音设备与暖光桌面" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%233b3530'/%3E%3Crect x='0' y='320' width='800' height='130' fill='%232a2521'/%3E%3Crect x='250' y='200' width='120' height='120' rx='16' fill='%23a98b62'/%3E%3Crect x='290' y='150' width='40' height='60' rx='18' fill='%23c9ab7d'/%3E%3Ccircle cx='560' cy='250' r='46' fill='%23e2b45c' opacity='.8'/%3E%3Crect x='470' y='300' width='180' height='14' rx='7' fill='%235a4a3a'/%3E%3C/svg%3E">
+          </div>
+          <div class="fd-topic-body">
+            <h3>巷口访谈录</h3>
+            <p>与手艺人、小店主人面对面，聊手艺也聊生活。</p>
+            <span class="fd-topic-state">持续更新 · 双周更</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者矩阵 -->
+  <section class="fd-sec fd-anchor" id="creators">
+    <div class="fd-wrap">
+      <div class="fd-sec-head">
+        <span class="fd-eyebrow">创作者矩阵</span>
+        <h2>长期在社区里认真拍片的人</h2>
+        <p>他们的方向各不相同，但都保持了稳定的更新节奏。点击可查看作者档案与代表作。</p>
+      </div>
+      <div class="fd-creators-grid">
+
+        <article class="fd-creator">
+          <div class="fd-creator-top">
+            <span class="fd-creator-avatar" style="background:#7a5a44">阿</span>
+            <div>
+              <h3>阿野在路上</h3>
+              <span>城市探索 · 骑行记录</span>
+            </div>
+          </div>
+          <p>用一台小相机记录城市边缘的路。喜欢长镜头，也喜欢在片尾留三十秒黑场。</p>
+          <div class="fd-creator-stats">
+            <div><b>86</b>作品</div>
+            <div><b>3.2 万</b>关注</div>
+            <div><b>4.8</b>口碑</div>
+          </div>
+          <button class="fd-creator-link" data-fd-open="creator" data-fd-name="阿野在路上">查看作者档案 →</button>
+        </article>
+
+        <article class="fd-creator">
+          <div class="fd-creator-top">
+            <span class="fd-creator-avatar" style="background:#a9682f">食</span>
+            <div>
+              <h3>小满的厨房</h3>
+              <span>美食烹饪 · 一人食</span>
+            </div>
+          </div>
+          <p>专注十五分钟以内的家常菜，坚持不加速、不摆拍，把厨房里的真实声音留下来。</p>
+          <div class="fd-creator-stats">
+            <div><b>132</b>作品</div>
+            <div><b>6.7 万</b>关注</div>
+            <div><b>4.9</b>口碑</div>
+          </div>
+          <button class="fd-creator-link" data-fd-open="creator" data-fd-name="小满的厨房">查看作者档案 →</button>
+        </article>
+
+        <article class="fd-creator">
+          <div class="fd-creator-top">
+            <span class="fd-creator-avatar" style="background:#b08968">陶</span>
+            <div>
+              <h3>陶土日记</h3>
+              <span>手作 DIY · 器物记录</span>
+            </div>
+          </div>
+          <p>从拉坯到烧窑，完整记录一件器物的诞生。失败的部分也保留在片子里。</p>
+          <div class="fd-creator-stats">
+            <div><b>54</b>作品</div>
+            <div><b>1.9 万</b>关注</div>
+            <div><b>4.7</b>口碑</div>
+          </div>
+          <button class="fd-creator-link" data-fd-open="creator" data-fd-name="陶土日记">查看作者档案 →</button>
+        </article>
+
+        <article class="fd-creator">
+          <div class="fd-creator-top">
+            <span class="fd-creator-avatar" style="background:#4f6b5c">野</span>
+            <div>
+              <h3>山野笔记</h3>
+              <span>户外活动 · 路线攻略</span>
+            </div>
+          </div>
+          <p>只走能当天往返的路线，拍完把交通、补给和注意事项一次写清楚。</p>
+          <div class="fd-creator-stats">
+            <div><b>71</b>作品</div>
+            <div><b>2.8 万</b>关注</div>
+            <div><b>4.8</b>口碑</div>
+          </div>
+          <button class="fd-creator-link" data-fd-open="creator" data-fd-name="山野笔记">查看作者档案 →</button>
+        </article>
+
+        <article class="fd-creator">
+          <div class="fd-creator-top">
+            <span class="fd-creator-avatar" style="background:#5c4a6e">访</span>
+            <div>
+              <h3>巷口访谈录</h3>
+              <span>人物访谈 · 在地文化</span>
+            </div>
+          </div>
+          <p>把镜头对准街边小店与老手艺人，访谈不设提纲，让对话自然发生。</p>
+          <div class="fd-creator-stats">
+            <div><b>39</b>作品</div>
+            <div><b>2.1 万</b>关注</div>
+            <div><b>4.9</b>口碑</div>
+          </div>
+          <button class="fd-creator-link" data-fd-open="creator" data-fd-name="巷口访谈录">查看作者档案 →</button>
+        </article>
+
+        <article class="fd-creator">
+          <div class="fd-creator-top">
+            <span class="fd-creator-avatar" style="background:#8e9aa3">窗</span>
+            <div>
+              <h3>城市观察局</h3>
+              <span>城市探索 · 影像企划</span>
+            </div>
+          </div>
+          <p>由三位拍摄者组成的小组，专注城市公共空间与日常细节的观察式记录。</p>
+          <div class="fd-creator-stats">
+            <div><b>48</b>作品</div>
+            <div><b>4.5 万</b>关注</div>
+            <div><b>4.8</b>口碑</div>
+          </div>
+          <button class="fd-creator-link" data-fd-open="creator" data-fd-name="城市观察局">查看作者档案 →</button>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评价 -->
+  <section class="fd-sec fd-quotes fd-anchor" id="quotes">
+    <div class="fd-wrap">
+      <div class="fd-sec-head">
+        <span class="fd-eyebrow">社区口碑</span>
+        <h2>他们这样描述在流动影像的体验</h2>
+        <p>来自创作者与长期用户的真实反馈，语气与角度各不相同，我们原样保留。</p>
+      </div>
+      <div class="fd-quote-grid">
+        <div class="fd-quote">
+          <div class="fd-stars">★★★★★</div>
+          <p>第一次投稿就被放进了专题，编辑只改了一个错别字，其他都按我自己的剪辑保留。这点特别难得。</p>
+          <div class="fd-quote-who"><span class="fd-avatar" style="background:#b08968">林</span><b>林舟</b> · 手作创作者</div>
+        </div>
+        <div class="fd-quote">
+          <div class="fd-stars">★★★★★</div>
+          <p>看片子的氛围很安静，评论区很少有人吵架。我经常晚上开着当背景音，慢慢就看完一整支了。</p>
+          <div class="fd-quote-who"><span class="fd-avatar" style="background:#7a5a44">周</span><b>周女士</b> · 用户</div>
+        </div>
+        <div class="fd-quote">
+          <div class="fd-stars">★★★★☆</div>
+          <p>更新节奏不算快，但每次上的专题都能看完。希望以后多一点幕后花絮，想看他们怎么拍的。</p>
+          <div class="fd-quote-who"><span class="fd-avatar" style="background:#4f6b5c">陈</span><b>陈一鸣</b> · 用户</div>
+        </div>
+        <div class="fd-quote">
+          <div class="fd-stars">★★★★★</div>
+          <p>作为品牌方合作过一次，流程很清楚，脚本阶段就会确认边界，没有强行加口播，成片比预期自然。</p>
+          <div class="fd-quote-who"><span class="fd-avatar" style="background:#8e9aa3">合</span><b>某家居品牌市场部</b> · 合作方</div>
+        </div>
+        <div class="fd-quote">
+          <div class="fd-stars">★★★★★</div>
+          <p>新人榜真的有用。我前三条片子没什么人看，第四条上了新人推荐，之后慢慢有了固定观众。</p>
+          <div class="fd-quote-who"><span class="fd-avatar" style="background:#a9682f">许</span><b>许小满</b> · 美食创作者</div>
+        </div>
+        <div class="fd-quote">
+          <div class="fd-stars">★★★★☆</div>
+          <p>画质要求确实严，第一次上传因为音频底噪被退回，按提示重录之后自己听着也舒服多了。</p>
+          <div class="fd-quote-who"><span class="fd-avatar" style="background:#5c4a6e">吴</span><b>吴桐</b> · 户外创作者</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 企业动态 + FAQ -->
+  <section class="fd-sec fd-anchor" id="news">
+    <div class="fd-wrap fd-split">
+      <div>
+        <span class="fd-eyebrow">企业动态</span>
+        <h2>官方发布与内容更新</h2>
+        <div class="fd-timeline">
+          <div class="fd-timeline-item">
+            <time>2026 年 11 月 18 日</time>
+            <h3>「城市清晨」第二季征集结果公布</h3>
+            <p>本期共收到 214 支投稿，最终入选 18 支，已进入专题合集。入选作者将获得创作激励与设备支持。</p>
+          </div>
+          <div class="fd-timeline-item">
+            <time>2026 年 11 月 16 日</time>
+            <h3>2026 冬季创作挑战赛开放报名</h3>
+            <p>主题为「慢下来的三十秒」，鼓励用单镜头记录一个完整动作。报名入口已在投稿页开放，截止 12 月 20 日。</p>
+          </div>
+          <div class="fd-timeline-item">
+            <time>2026 年 11 月 14 日</time>
+            <h3>创作者激励计划第二期上线</h3>
+            <p>新增音频设备支持与剪辑协作名额，面向持续更新三个月以上的创作者开放申请。</p>
+          </div>
+          <div class="fd-timeline-item">
+            <time>2026 年 11 月 8 日</time>
+            <h3>社区评论规范更新</h3>
+            <p>细化了对拍摄地、肖像使用的说明要求，帮助创作者在发布前完成自查，减少后续沟通成本。</p>
+          </div>
+        </div>
+        <div style="margin-top:32px">
+          <span class="fd-eyebrow">合作品牌</span>
+          <div class="fd-partners">
+            <span class="fd-partner">木言家居</span>
+            <span class="fd-partner">山行户外</span>
+            <span class="fd-partner">慢焙咖啡</span>
+            <span class="fd-partner">本地手作市集</span>
+            <span class="fd-partner">城市公共文化计划</span>
+          </div>
+        </div>
+      </div>
+      <div class="fd-faq">
+        <span class="fd-eyebrow">常见问题</span>
+        <h2>关于投稿与社区规则</h2>
+        <details open>
+          <summary>投稿对画质和时长有要求吗？</summary>
+          <p>建议 1080P 以上、时长 3 至 25 分钟，声音干净、字幕与口播一致即可。专题企划会有单独的时长说明，报名页面会写清楚。</p>
+        </details>
+        <details>
+          <summary>非专业设备拍摄可以投稿吗？</summary>
+          <p>可以。我们更看重内容是否真实完整，手机拍摄的优质作品同样会进入推荐。上传页提供基础检查清单，可以照着自查。</p>
+        </details>
+        <details>
+          <summary>商业合作内容会怎么标注？</summary>
+          <p>合作内容会在片头与简介中明确标注合作方，并保留创作者本人的叙事方式。我们不允许在未标注的情况下植入推广。</p>
+        </details>
+        <details>
+          <summary>作品被推荐后可以获得什么？</summary>
+          <p>包括专题合集曝光、首页焦点位、创作激励或设备支持，部分作品会受邀参与品牌共创项目，具体以站内通知为准。</p>
+        </details>
+        <details>
+          <summary>如何申请成为认证创作者？</summary>
+          <p>持续更新满三个月、作品口碑稳定、无违规记录即可在个人页提交申请，审核周期通常为五个工作日。</p>
+        </details>
+        <details>
+          <summary>可以在站内下载自己的作品吗？</summary>
+          <p>可以。创作者本人可在作品管理页下载原始成片与封面素材，平台不会对原创作品做二次分发。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 / 投稿 -->
+  <section class="fd-sec fd-anchor" id="contact">
+    <div class="fd-wrap">
+      <div class="fd-contact-card">
+        <div>
+          <span class="fd-eyebrow" style="color:var(--fd-amber)">联系我们</span>
+          <h2>让下一支片子，从你的日常开始</h2>
+          <p>无论你是想投稿、申请合作，还是希望参与专题企划，都可以通过下面的入口找到我们。品牌官网会持续更新官方发布与合作说明。</p>
+          <div class="fd-contact-actions">
+            <button class="fd-btn fd-btn-primary" data-fd-open="submit" style="background:var(--fd-amber);color:#2b2417">我要投稿</button>
+            <button class="fd-btn fd-btn-ghost" data-fd-open="share">分享本站</button>
+            <button class="fd-btn fd-btn-ghost" data-fd-open="feedback">反馈建议</button>
+          </div>
+        </div>
+        <div class="fd-contact-info">
+          <div><b>合作邮箱</b>partner@flowvideo.example</div>
+          <div><b>投稿咨询</b>工作日 10:00 – 18:00 在线</div>
+          <div><b>办公地址</b>城市文化创意园 3 号楼 2 层</div>
+          <div><b>官方发布</b>站内公告与动态页同步更新</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="fd-foot">
+  <div class="fd-wrap">
+    <div class="fd-foot-grid">
+      <div class="fd-foot-brand">
+        <div class="fd-logo">
+          <span class="fd-logo-mark">▶</span>
+          <span>流动影像<small>FLOW VIDEO</small></span>
+        </div>
+        <p>流动影像官方网站，专注日常记录与创意影像的品牌视频社区。持续运营原创精品内容，与创作者共同成长。</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <ul>
+          <li><a href="#focus">焦点内容</a></li>
+          <li><a href="#stream">影像社区</a></li>
+          <li><a href="#topics">专题企划</a></li>
+          <li><a href="#creators">创作者矩阵</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="#about">品牌解析</a></li>
+          <li><a href="#news">企业动态</a></li>
+          <li><a href="#quotes">社区口碑</a></li>
+          <li><a href="#contact">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与</h4>
+        <ul>
+          <li><a href="#" data-fd-open="submit">投稿入口</a></li>
+          <li><a href="#" data-fd-open="share">分享本站</a></li>
+          <li><a href="#" data-fd-open="feedback">反馈建议</a></li>
+          <li><a href="#news">常见问题</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fd-foot-bottom">
+      <span>© 2026 流动影像 FLOW VIDEO · 官方网站 · 版权所有</span>
+      <span>持续运营中 · 原创正版 · 高清品质 · 值得信赖</span>
+    </div>
+  </div>
+</footer>
+
+<div class="fd-toast" id="fdToast" role="status" aria-live="polite"></div>
+
+<div class="fd-modal" id="fdModal" aria-hidden="true">
+  <div class="fd-modal-box" role="dialog" aria-modal="true">
+    <button class="fd-modal-close" id="fdModalClose" aria-label="关闭">×</button>
+    <div id="fdModalContent"></div>
+  </div>
+</div>
+
+<button class="fd-top-btn" id="fdTopBtn" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var toastTimer = null;
+  function toast(msg){
+    var el = document.getElementById('fdToast');
+    el.textContent = msg;
+    el.classList.add('is-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ el.classList.remove('is-show'); }, 2200);
+  }
+
+  /* 移动端导航 */
+  var navToggle = document.getElementById('fdNavToggle');
+  var mobileNav = document.getElementById('fdMobileNav');
+  navToggle.addEventListener('click', function(){
+    var open = mobileNav.style.display === 'flex';
+    mobileNav.style.display = open ? 'none' : 'flex';
+    navToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+    navToggle.textContent = open ? '☰' : '×';
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.style.display = 'none';
+      navToggle.setAttribute('aria-expanded','false');
+      navToggle.textContent = '☰';
+    });
+  });
+
+  /* 搜索反馈 */
+  var searchInput = document.getElementById('fdSearchInput');
+  var searchBtn = document.getElementById('fdSearchBtn');
+  function doSearch(){
+    var q = searchInput.value.trim();
+    if(!q){
+      toast('请输入关键词，如「手作」「城市清晨」');
+      return;
+    }
+    toast('正在为「' + q + '」匹配站内作品与创作者');
+  }
+  searchBtn.addEventListener('click', doSearch);
+  searchInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); doSearch(); }
+  });
+
+  /* 数字滚动 */
+  var counted = false;
+  function runCount(){
+    if(counted) return;
+    counted = true;
+    document.querySelectorAll('[data-fd-count]').forEach(function(el){
+      var target = parseInt(el.getAttribute('data-fd-count'),10);
+      var start = 0, dur = 1100, t0 = null;
+      function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min((ts - t0)/dur, 1);
+        var val = Math.floor(start + (target - start) * (1 - Math.pow(1 - p, 3)));
+        el.textContent = val.toLocaleString('zh-CN') + (target >= 10000 ? '+' : '');
+        if(p < 1) requestAnimationFrame(step);
+        else el.textContent = target.toLocaleString('zh-CN') + (target >= 10000 ? '+' : '');
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  var statsEl = document.querySelector('.fd-hero-stats');
+  if('IntersectionObserver' in window && statsEl){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting) runCount(); });
+    }, {threshold:.3});
+    io.observe(statsEl);
+  } else { runCount(); }
+
+  /* 点赞 / 收藏 */
+  document.addEventListener('click', function(e){
+    var likeBtn = e.target.closest('[data-fd-like]');
+    if(likeBtn){
+      var numEl = likeBtn.querySelector('[data-fd-num]');
+      var n = parseInt(numEl.textContent,10);
+      if(likeBtn.classList.toggle('is-on')){
+        numEl.textContent = n + 1;
+        likeBtn.innerHTML = '♥ 赞 <em data-fd-num>' + (n+1) + '</em>';
+        toast('已点赞');
+      } else {
+        numEl.textContent = n - 1;
+        likeBtn.innerHTML = '♡ 赞 <em data-fd-num>' + (n-1) + '</em>';
+        toast('已取消点赞');
+      }
+      return;
+    }
+    var favBtn = e.target.closest('[data-fd-fav]');
+    if(favBtn){
+      var on = favBtn.classList.toggle('is-on');
+      favBtn.textContent = on ? '♥ 已收藏' : '♡ 收藏';
+      toast(on ? '已加入收藏' : '已取消收藏');
+      return;
+    }
+  });
+
+  /* 标签筛选 */
+  var tabs = document.querySelectorAll('[data-fd-filter]');
+  var cards = document.querySelectorAll('#fdStream [data-fd-cat]');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('is-on'); });
+      tab.classList.add('is-on');
+      var key = tab.getAttribute('data-fd-filter');
+      cards.forEach(function(card){
+        var match = (key === 'all' || card.getAttribute('data-fd-cat') === key);
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  });
+
+  /* 弹窗 */
+  var modal = document.getElementById('fdModal');
+  var modalContent = document.getElementById('fdModalContent');
+  var modalClose = document.getElementById('fdModalClose');
+  function openModal(html){
+    modalContent.innerHTML = html;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+  }
+  function closeModal(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+  }
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+  var modalTemplates = {
+    submit: '<h3>投稿入口</h3><p>填写基本信息后，编辑部会在三个工作日内通过站内消息与你联系。请确保作品为本人原创。</p>' +
+      '<label>作品标题</label><input type="text" placeholder="例如：打磨一块胡桃木的四十分钟">' +
+      '<label>联系方式</label><input type="text" placeholder="邮箱或手机号">' +
+      '<label>作品简介</label><textarea rows="3" placeholder="简单说明拍摄内容与时长"></textarea>' +
+      '<div class="fd-share-row"><button type="button" id="fdSubmitSend">提交投稿</button></div>',
+    share: '<h3>分享本站</h3><p>把流动影像分享给同样喜欢日常影像的朋友。</p>' +
+      '<div class="fd-share-row"><button type="button" data-fd-copy>复制链接</button><button type="button" data-fd-shareto="微信">微信</button><button type="button" data-fd-shareto="微博">微博</button><button type="button" data-fd-shareto="QQ">QQ</button></div>',
+    feedback: '<h3>反馈建议</h3><p>我们会认真阅读每一条反馈，并持续改进社区体验。</p>' +
+      '<label>反馈类型</label><input type="text" placeholder="内容问题 / 功能建议 / 合作咨询">' +
+      '<label>详细说明</label><textarea rows="3" placeholder="请描述你遇到的问题或建议"></textarea>' +
+      '<div class="fd-share-row"><button type="button" id="fdFeedbackSend">提交建议</button></div>',
+    creator: '<h3>作者档案</h3><p>该创作者长期在流动影像发布原创作品，内容以真实记录为主，更新节奏稳定。完整作品列表与拍摄手记可在作者主页查看。</p><p style="font-size:13px;color:#8a8275">提示：作者主页入口已在校验环境中保留，站内消息可直达。</p>'
+  };
+
+  document.addEventListener('click', function(e){
+    var trigger = e.target.closest('[data-fd-open]');
+    if(trigger){
+      e.preventDefault();
+      var key = trigger.getAttribute('data-fd-open');
+      var html = modalTemplates[key] || '<p>内容加载中</p>';
+      if(key === 'creator'){
+        var name = trigger.getAttribute('data-fd-name') || '该创作者';
+        html = '<h3>' + name + '</h3>' + html.replace('<h3>作者档案</h3>','');
+      }
+      openModal(html);
+      return;
+    }
+    if(e.target.closest('[data-fd-copy]')){
+      var link = window.location.href.split('#')[0];
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(link).then(function(){ toast('链接已复制'); }, function(){ toast('复制失败，请手动复制'); });
+      } else {
+        toast('当前浏览器不支持自动复制');
+      }
+      return;
+    }
+    var shareTo = e.target.closest('[data-fd-shareto]');
+    if(shareTo){
+      toast('已生成分享提示：' + shareTo.getAttribute('data-fd-shareto'));
+      return;
+    }
+    if(e.target.id === 'fdSubmitSend'){
+      toast('投稿已提交，编辑部会尽快联系你');
+      closeModal();
+      return;
+    }
+    if(e.target.id === 'fdFeedbackSend'){
+      toast('感谢反馈，我们已收到');
+      closeModal();
+    }
+  });
+
+  /* 回到顶部 */
+  var topBtn = document.getElementById('fdTopBtn');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 620) topBtn.classList.add('is-show');
+    else topBtn.classList.remove('is-show');
+  }, {passive:true});
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+                                 </html>
